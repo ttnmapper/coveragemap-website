@@ -1,0 +1,43 @@
+{
+  "network": {
+    "network_id": "NS_HELIUM://000024",
+    "network_name": "Helium"
+  },
+  "analytics": {
+    "site_id": "UA-75921430-2"
+  },
+  "theming": {
+    "site_name": "Helium Coverage",
+    "site_description": "Coverage of the Helium People's Network",
+    "favicon_dir": "/config/favicons",
+    "brand_icon": "/config/TTNMapper.svg",
+    "brand_name": "Coverage Map",
+    "gateway_icon_size_x": 20,
+    "gateway_icon_size_y": 20,
+    "gateway_icon_anchor_x": 10,
+    "gateway_icon_anchor_y": 10,
+    "gateway_popup_anchor_x": 2,
+    "gateway_popup_anchor_y": 2,
+    "gateway_online": "/config/helium-gateway-white-center.svg",
+    "gateway_online_not_mapped": "/config/helium-gateway-white-center.svg",
+    "gateway_single_channel": "/config/helium-gateway-white-center.svg",
+    "gateway_offline": "/config/helium-gateway-white-center-orange.svg",
+    "map_start_lat": 48.2,
+    "map_start_lon": 10.2,
+    "map_start_zoom": 6,
+    "cluster_gateways": false,
+    "marker_cluster_radius": 20,
+    "show_unmapped_gateways": true
+  },
+  "menu": {
+    "menu_advanced": true,
+    "menu_heatmap": true,
+    "menu_colour_radar": false,
+    "menu_area_plot": false,
+    "menu_leaderboard": false,
+    "menu_acknowledgements": false,
+    "menu_faq": false,
+    "teespring": false,
+    "patreon": true
+  }
+}
