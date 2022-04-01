@@ -277,6 +277,7 @@ function popUpHeader(gateway) {
   let header = `<b>${he.encode(gateway.name)}</b>`;
   header = `${header}<br>ID: ${gateway.gateway_id}`;
   header = `${header}<br>Network: ${gateway.network_id}`;
+  header = `${header}<br><a target="_blank" href="https://explorer.helium.com/hotspots/${gateway.gateway_id}">View in Explorer</a>`
   return header;
 }
 
