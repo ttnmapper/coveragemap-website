@@ -118,7 +118,7 @@ function addBackgroundLayers() {
   }
 
   var layerControlOptions = {};
-  if (L.Browser.android || L.Browser.mobile /*|| L.Browser.touch*/ || L.Browser.retina) {
+  if (L.Browser.android || L.Browser.mobile /*|| L.Browser.touch || L.Browser.retina*/) {
     console.log("Mobile Browser");
     console.log(L.Browser.android, L.Browser.mobile, L.Browser.touch, L.Browser.retina);
     layerControlOptions.collapsed = true;
