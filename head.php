@@ -95,4 +95,8 @@ if(isset($settings['analytics']['site_id'])) {
     }
   </style>
 
+    <!-- Google ads verification -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4919960117739141"
+            crossorigin="anonymous"></script>
+
 </head>
