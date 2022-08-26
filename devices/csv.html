@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<pre id="csvcontent">
+    Loading...
+</pre>
+
+<!-- Moment for datetime manipulation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"
+        integrity="sha512-fFkDTD3GpiLXZBIrfRu0etHZkCdWPkcNy4TjDqI3gQFVfbbDRFG5vV7w3mIeeOCvUY5cEKTUFiTetIsFtWjF1Q=="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/common.js"></script>
+
+<script>
+    getData();
+
+    function getData() {
+        var startTime = moment(findGetParameter("startdate"));
+        var endTime = moment(findGetParameter("enddate"));
+
+        // If no start and end times provided, use today
+        if (!startTime.isValid()) {
+            startTime = moment().startOf('day');
+        }
+        if (!endTime.isValid()) {
+            endTime = moment().startOf('day');
+        }
+
+        // If end time is only a date, add time
+        if (endTime.hour() === 0 && endTime.minute() === 0 && endTime.second() === 0) {
+            endTime.add(1, 'days');
+        }
+
+        var url = new URL('https://api.ttnmapper.org/device/data')
+        var params = {
+            dev_id: findGetParameter("device"),
+            start_time: startTime.toISOString(),
+            end_time: endTime.toISOString()
+        };
+        const app_id = findGetParameter("application");
+        const network_id = findGetParameter("network_id");
+        if (app_id != null) {
+            params.app_id = app_id;
+        }
+        if (network_id != null) {
+            params.network_id = app_id;
+        }
+
+        url.search = new URLSearchParams(params).toString();
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var contentString = "database_id,time,dev_id,dev_eui,app_id,device_network_id,gateway_id,gateway_network_id,gateway_time,antenna_index,channel_index,fine_timestamp,frequency,spreading_factor,bandwidth,bitrate,coding_rate,f_cnt,f_port,modulation,rssi,signal_rssi,snr,latitude,longitude,altitude,accuracy_meters,hdop,satellites,location_source,experiment,user_agent\n";
+                for (point of data) {
+                    contentString += point['database_id'] + ",";
+                    contentString += point['time'] + ",";
+                    contentString += point['dev_id'] + ",";
+                    contentString += point['dev_eui'] + ",";
+                    contentString += point['app_id'] + ",";
+                    contentString += point['device_network_id'] + ",";
+                    contentString += point['gateway_id'] + ",";
+                    contentString += point['gateway_network_id'] + ",";
+                    contentString += point['gateway_time'] + ",";
+                    contentString += point['antenna_index'] + ",";
+                    contentString += point['channel_index'] + ",";
+                    contentString += point['fine_timestamp'] + ",";
+                    contentString += point['frequency'] + ",";
+                    contentString += point['spreading_factor'] + ",";
+                    contentString += point['bandwidth'] + ",";
+                    contentString += point['bitrate'] + ",";
+                    contentString += point['coding_rate'] + ",";
+                    contentString += point['f_cnt'] + ",";
+                    contentString += point['f_port'] + ",";
+                    contentString += point['modulation'] + ",";
+                    contentString += point['rssi'] + ",";
+                    contentString += point['signal_rssi'] + ",";
+                    contentString += point['snr'] + ",";
+                    contentString += point['latitude'] + ",";
+                    contentString += point['longitude'] + ",";
+                    contentString += point['altitude'] + ",";
+                    contentString += point['accuracy_meters'] + ",";
+                    contentString += point['hdop'] + ",";
+                    contentString += point['satellites'] + ",";
+                    contentString += point['location_source'] + ",";
+                    contentString += point['experiment'] + ",";
+                    contentString += point['user_agent'];
+                    contentString += "\n";
+                }
+                var targetDiv = document.getElementById("csvcontent");
+                targetDiv.innerHTML = contentString;
+            });
+    }
+</script>
+</body>
+</html>

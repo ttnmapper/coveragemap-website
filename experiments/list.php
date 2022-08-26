@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require getenv("TTNMAPPER_HOME").'/coveragemap/head.php'; ?>
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/head.php'; ?>
 <body>
 
 
@@ -9,7 +9,7 @@
 <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
   
   <a class="navbar-brand" href="/">
-    <img src="<?php echo $brandIcon; ?>" width="auto" height="32" class="d-inline-block align-top" alt="">
+      <img src="<?php echo $brandIcon; ?>" width="auto" height="32" class="d-inline-block align-top" alt="">
       Coverage Map
   </a>
   
@@ -35,28 +35,9 @@
     </div>
 
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <?php
-            if(!isset($settings['menu']['teespring']) or $settings['menu']['teespring'] == true) {
-                ?>
-                <li class="nav-item mr-2">
-                    <a class="nav-link" href="https://teespring.com/ttnmapper">
-                        <img src="/config/teespring.svg" height="25" class="d-inline-block align-middle" alt="" title="Teespring">
-                        Get the T-Shirt
-                    </a>
-                </li>
-                <?php
-            }
-
-            if(!isset($settings['menu']['patreon']) or $settings['menu']['patreon'] == true) {
-                ?>
-                <li class="nav-item">
-                    <a href="https://www.patreon.com/ttnmapper" data-patreon-widget-type="become-patron-button"><img src="/config/become_a_patron_button@2x.png" class="d-inline-block align-middle" alt="" height="36" title="Patreon"></a>
-                </li>
-                <?php
-            }
-            ?>
-        </ul>
+        <div class="navbar-nav ml-auto">
+            <a href="https://docs.ttnmapper.org/support-project.html" target="_blank"><button class="btn btn-primary">Support the project</button></a>
+        </div>
     </div>
 
 </nav>
