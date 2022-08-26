@@ -22,9 +22,9 @@
     "gateway_online_not_mapped": "/config/helium-gateway-white-center.svg",
     "gateway_single_channel": "/config/helium-gateway-white-center.svg",
     "gateway_offline": "/config/helium-gateway-white-center-orange.svg",
-    "map_start_lat": 48.2,
-    "map_start_lon": 10.2,
-    "map_start_zoom": 6,
+    "map_start_lat": 37.83,
+    "map_start_lon": -122.35,
+    "map_start_zoom": 11,
     "cluster_gateways": false,
     "marker_cluster_radius": 20,
     "show_unmapped_gateways": true
