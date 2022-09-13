@@ -62,34 +62,6 @@
   </div>
 </div>
 
-
-
-  <!-- Google analytics-->
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
-
-  if (window.localStorage) {
-    ga('create', '<?php echo $googleAnalyticsSiteId; ?>', {
-      'storage': 'none',
-      'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
-    });
-    ga(function(tracker) {
-      localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
-    });
-  }
-  else {
-    ga('create', '<?php echo $googleAnalyticsSiteId; ?>', 'auto');
-  }
-
-  ga('send', 'pageview');
-
-  </script>
-
   <!-- Bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

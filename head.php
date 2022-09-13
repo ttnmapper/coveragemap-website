@@ -36,10 +36,10 @@ if(isset($settings['theming']['brand_name'])) {
   $brandName = "Coverage Map";
 }
 
-if(isset($settings['analytics']['site_id'])) {
-  $googleAnalyticsSiteId = $settings['analytics']['site_id'];
+if (isset($settings['analytics']['measurement_id'])) {
+    $googleAnalyticsMeasurementId = $settings['analytics']['measurement_id'];
 } else {
-  $googleAnalyticsSiteId = "UA-75921430-4";
+    $googleAnalyticsMeasurementId = "UA-75921430-4";
 }
 
 ?>
@@ -95,8 +95,19 @@ if(isset($settings['analytics']['site_id'])) {
     }
   </style>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $googleAnalyticsMeasurementId; ?>">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', '<?php echo $googleAnalyticsMeasurementId; ?>');
+    </script>
+
     <!-- Google ads verification -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4919960117739141"
             crossorigin="anonymous"></script>
-
 </head>
