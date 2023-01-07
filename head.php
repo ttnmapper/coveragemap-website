@@ -82,7 +82,7 @@
     <link rel="stylesheet" href="/theme.css"/>
 
     <!-- Leaflet -->
-    <link rel="stylesheet" href="/libs/leaflet/leaflet.css"/>
+    <link rel="stylesheet" href="/libs/leaflet-1.9.3/leaflet.css"/>
     <link rel="stylesheet" href="/libs/Leaflet.markercluster/dist/MarkerCluster.css"/>
     <link rel="stylesheet" href="/libs/Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
     <link rel="stylesheet" href="/libs/leaflet.measure/leaflet.measure.css"/>

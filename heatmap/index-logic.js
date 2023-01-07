@@ -29,14 +29,13 @@ async function setUp() {
 
     addBackgroundLayers();
     addForegroundLayers();
-    // getGatewaysInView();
 
-    // gatewayMarkers.addTo(map);
-    //gatewayMarkersNoCluster.addTo(map);
+    // Add gateways by triggering the boundsChangeCallback
+    boundsChangedCallback().then(r => {});
 }
 
 // Callback to refresh layers when the maps was panned or zoomed
-function boundsChangedCallback() {
+async function boundsChangedCallback() {
     // Refresh the visible gateways, which will also trigger a layer refresh
     // getGatewaysInView();
     if (map.getZoom() >= 7) {
@@ -66,8 +65,6 @@ function addForegroundLayers() {
 
         CreateGatewayLayers(network);
     }
-
-    setTimeout(boundsChangedCallback, 1000);
 }
 
 function CreateGatewayLayers(network) {
