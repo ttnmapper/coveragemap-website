@@ -73,9 +73,10 @@
         </button>
     </div>
 
-    <div id="map"></div>
-    <div id="rightcontainer">
-        <div id="legend" class="dropSheet"></div>
+    <div id="map">
+        <div id="rightcontainer">
+            <div id="legend" class="dropSheet"></div>
+        </div>
     </div>
 </div>
 

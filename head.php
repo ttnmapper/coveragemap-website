@@ -87,20 +87,6 @@
     <link rel="stylesheet" href="/libs/Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
     <link rel="stylesheet" href="/libs/leaflet.measure/leaflet.measure.css"/>
 
-    <style>
-        html {
-            height: 100%;
-        }
-
-        body {
-            height: 100%;
-        }
-
-        #map {
-            flex-grow: 1;
-        }
-    </style>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $googleAnalyticsMeasurementId; ?>">
     </script>
