@@ -4,25 +4,27 @@ var lineMarkers = L.featureGroup();
 var gatewayData = {};
 var pointData = {};
 
-var showOfflineGateways = "1";
+setUp().then(r => {
+});
 
-setUp();
-
-function setUp() {
+async function setUp() {
     $("#legend").load("/legend.html");
     $("#legend").css({visibility: "visible"});
 
-    initMap();
+    await initMap();
 
     addBackgroundLayers();
-    if(findGetParameter("gateways")==="on") {
-        gatewayMarkers.addTo(map);
-        gatewayMarkersNoCluster.addTo(map);
+    if (findGetParameter("gateways") !== null && findGetParameter("gateways") !== "off") {
+        if (settings.theming.cluster_gateways) {
+            gatewayMarkersCluster.addTo(map);
+        } else {
+            gatewayMarkersNoCluster.addTo(map);
+        }
     }
-    if(findGetParameter("points")==="on") {
+    if (findGetParameter("points") !== null && findGetParameter("points") !== "off") {
         pointMarkers.addTo(map);
     }
-    if(findGetParameter("lines")==="on") {
+    if (findGetParameter("lines") !== null && findGetParameter("lines") !== "off") {
         lineMarkers.addTo(map);
     }
     getData();
@@ -45,10 +47,10 @@ function getData() {
     var endTime = moment(findGetParameter("enddate"));
 
     // Experiments always show all data
-    if(!startTime.isValid()) {
+    if (!startTime.isValid()) {
         startTime = moment.unix(0);
     }
-    if(!endTime.isValid()) {
+    if (!endTime.isValid()) {
         endTime = moment().startOf('day');
     }
 
@@ -109,12 +111,13 @@ function addLines(network_id, gateway_id) {
         const gwDescriptionHead = popUpHeader(gateway);
         const gwDescription = popUpDescription(gateway);
         gatewayMarker.bindPopup(`${gwDescriptionHead}<br>${gwDescription}`);
-        gatewayMarkers.addLayer(gatewayMarker);
+        gatewayMarkersCluster.addLayer(gatewayMarker);
+        gatewayMarkersNoCluster.addLayer(gatewayMarker);
     } else {
         console.log("Gateway " + gateway_id + " on NULL island");
     }
 
-    for (data of pointData) {
+    for (let data of pointData) {
         if (data['gateway_id'] !== gateway_id || data['gateway_network_id'] !== network_id) {
             continue;
         }
@@ -208,8 +211,8 @@ function fitBounds() {
         if (lineMarkers.getBounds().isValid()) {
             bounds.extend(lineMarkers.getBounds());
         }
-        if (gatewayMarkers.getBounds().isValid()) {
-            bounds.extend(gatewayMarkers.getBounds());
+        if (gatewayMarkersCluster.getBounds().isValid()) {
+            bounds.extend(gatewayMarkersCluster.getBounds());
         }
         if (gatewayMarkersNoCluster.getBounds().isValid()) {
             bounds.extend(gatewayMarkersNoCluster.getBounds());

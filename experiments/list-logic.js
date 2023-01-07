@@ -1,6 +1,6 @@
-$(document).ready( function () {
+$(document).ready(function () {
     findExperiments(findGetParameter("experiment"))
-} );
+});
 
 // document.getElementById("search").onsubmit = function() {
 //     findExperiments(document.getElementById("experiment-name").value);
@@ -10,7 +10,7 @@ function findExperiments(experiment) {
 
     $("#dataTable:not(:first)").remove(); // clear all rows
 
-    if(experiment === "") {
+    if (experiment === "") {
         var loader = document.getElementById('experiments-loading');
         loader.style.display = 'none';
         return;
@@ -30,7 +30,7 @@ function findExperiments(experiment) {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            for(experiment of data) {
+            for (experiment of data) {
                 // table.row.add( [
                 //     experiment.id,
                 //     experiment.name,

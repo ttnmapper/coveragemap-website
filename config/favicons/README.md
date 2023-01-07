@@ -1,12 +1,14 @@
 # Your Favicon Package
 
-This package was generated with [RealFaviconGenerator](https://realfavicongenerator.net/) [v0.16](https://realfavicongenerator.net/change_log#v0.16)
+This package was generated
+with [RealFaviconGenerator](https://realfavicongenerator.net/) [v0.16](https://realfavicongenerator.net/change_log#v0.16)
 
 ## Install instructions
 
 To install this package:
 
-Extract this package in <code>&lt;web site&gt;/favicons/</code>. If your site is <code>http://www.example.com</code>, you should be able to access a file named <code>http://www.example.com/favicons/favicon.ico</code>.
+Extract this package in <code>&lt;web site&gt;/favicons/</code>. If your site is <code>http://www.example.com</code>,
+you should be able to access a file named <code>http://www.example.com/favicons/favicon.ico</code>.
 
 Insert the following code in the `head` section of your pages:
 

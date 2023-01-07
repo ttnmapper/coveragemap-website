@@ -6,45 +6,48 @@ var pointData = {};
 
 var showOfflineGateways = "1";
 
-setUp();
+setUp().then(r => {
+});
 
-function setUp() {
-  $("#legend").load("/legend.html");
-  $("#legend").css({ visibility: "visible"});
+async function setUp() {
+    $("#legend").load("/legend.html");
+    $("#legend").css({visibility: "visible"});
 
-  initMap();
+    await initMap();
 
     addBackgroundLayers();
-    if(findGetParameter("gateways")==="on") {
-        gatewayMarkers.addTo(map);
-        gatewayMarkersNoCluster.addTo(map);
+    if (findGetParameter("gateways") !== null && findGetParameter("gateways") !== "off") {
+        if (settings.theming.cluster_gateways) {
+            gatewayMarkersCluster.addTo(map);
+        } else {
+            gatewayMarkersNoCluster.addTo(map);
+        }
     }
-    if(findGetParameter("points")==="on") {
+    if (findGetParameter("points") !== null && findGetParameter("points") !== "off") {
         pointMarkers.addTo(map);
     }
-    if(findGetParameter("lines")==="on") {
+    if (findGetParameter("lines") !== null && findGetParameter("lines") !== "off") {
         lineMarkers.addTo(map);
     }
-  getData();
+    getData();
 }
 
 // Callback to refresh layers when the maps was panned or zoomed
 function boundsChangedCallback() {
-  //nothing to do
-  //getGatewaysInView();
+    //nothing to do
+    //getGatewaysInView();
 }
 
 function showOrHideLayers() {
-  if(!dataAlreadyAdded) {
-    addPointsAndLines();
-  }
+    if (!dataAlreadyAdded) {
+        addPointsAndLines();
+    }
 
-  $("div.spanner").addClass("hide");
-  $("div.overlay").addClass("hide");
+    $("div.spanner").addClass("hide");
+    $("div.overlay").addClass("hide");
 }
 
-function getData()
-{
+function getData() {
     $("div.spanner").addClass("show");
     $("div.overlay").addClass("show");
 
@@ -52,10 +55,10 @@ function getData()
     var endTime = moment(findGetParameter("enddate"));
 
     // If no start and end times provided, use today
-    if(!startTime.isValid()) {
+    if (!startTime.isValid()) {
         startTime = moment().startOf('day');
     }
-    if(!endTime.isValid()) {
+    if (!endTime.isValid()) {
         endTime = moment().startOf('day');
     }
 
@@ -71,7 +74,7 @@ function getData()
         end_time: endTime.toISOString()
     };
     const network_id = findGetParameter("network_id");
-    if(network_id != null) {
+    if (network_id != null) {
         params.network_id = network_id;
     }
 
@@ -118,7 +121,8 @@ function addLines(network_id, gateway_id) {
         const gwDescriptionHead = popUpHeader(gateway);
         const gwDescription = popUpDescription(gateway);
         gatewayMarker.bindPopup(`${gwDescriptionHead}<br>${gwDescription}`);
-        gatewayMarkers.addLayer(gatewayMarker);
+        gatewayMarkersCluster.addLayer(gatewayMarker);
+        gatewayMarkersNoCluster.addLayer(gatewayMarker);
     } else {
         console.log("Gateway " + gateway_id + " on NULL island");
     }
@@ -217,8 +221,8 @@ function fitBounds() {
         if (lineMarkers.getBounds().isValid()) {
             bounds.extend(lineMarkers.getBounds());
         }
-        if (gatewayMarkers.getBounds().isValid()) {
-            bounds.extend(gatewayMarkers.getBounds());
+        if (gatewayMarkersCluster.getBounds().isValid()) {
+            bounds.extend(gatewayMarkersCluster.getBounds());
         }
         if (gatewayMarkersNoCluster.getBounds().isValid()) {
             bounds.extend(gatewayMarkersNoCluster.getBounds());
