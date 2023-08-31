@@ -48,6 +48,8 @@
 <div class="container ">
     <h1 class="mt-4">Advanced Maps</h1>
 
+    <?php
+    /*
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4919960117739141"
             crossorigin="anonymous"></script>
     <!-- Mapper Advanced Banner -->
@@ -60,6 +62,8 @@
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+    */
+    ?>
 
     <div class="card mt-4">
         <h5 class="card-header">Device data</h5>
