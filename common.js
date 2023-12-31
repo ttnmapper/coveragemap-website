@@ -29,6 +29,9 @@ var gatewayMarkerChirpV3;
 var gatewayMarkerHeliumOnline;
 var gatewayMarkerHeliumOffline;
 
+var gatewayMarkerThingsIxOnline;
+var gatewayMarkerThingsIxOffline;
+
 var gatewayMarkerDefault;
 
 async function initMap() {
@@ -98,6 +101,19 @@ async function initMap() {
         iconSize: [settings.theming.gateway_icon_size_x, settings.theming.gateway_icon_size_y], // size of the icon
         iconAnchor: [settings.theming.gateway_icon_anchor_x, settings.theming.gateway_icon_anchor_y], // point of the icon which will correspond to marker\'s location
         popupAnchor: [settings.theming.gateway_popup_anchor_x, settings.theming.gateway_popup_anchor_y] // point from which the popup should open relative to the iconAnchor
+    });
+
+    gatewayMarkerThingsIxOnline = L.icon({
+        iconUrl: settings.theming.gateway_thingsix_online,
+        iconSize:     [settings.theming.gateway_icon_size_x, settings.theming.gateway_icon_size_y], // size of the icon
+        iconAnchor:   [settings.theming.gateway_icon_anchor_x, settings.theming.gateway_icon_anchor_y], // point of the icon which will correspond to marker\'s location
+        popupAnchor:  [settings.theming.gateway_popup_anchor_x, settings.theming.gateway_popup_anchor_y] // point from which the popup should open relative to the iconAnchor
+    });
+    gatewayMarkerThingsIxOffline = L.icon({
+        iconUrl: settings.theming.gateway_thingsix_offline,
+        iconSize:     [settings.theming.gateway_icon_size_x, settings.theming.gateway_icon_size_y], // size of the icon
+        iconAnchor:   [settings.theming.gateway_icon_anchor_x, settings.theming.gateway_icon_anchor_y], // point of the icon which will correspond to marker\'s location
+        popupAnchor:  [settings.theming.gateway_popup_anchor_x, settings.theming.gateway_popup_anchor_y] // point from which the popup should open relative to the iconAnchor
     });
 
     gatewayMarkerDefault = L.icon({
@@ -352,7 +368,7 @@ function iconByNetworkId(networkId, lastHeardDate) {
         }
         return gatewayMarkerTTSV3Online;
     }
-    if (networkId.startsWith("NS_TTS_V3://")) {
+    if (networkId.startsWith("NS_TTS_V3")) {
         if (lastHeardDate < (Date.now() - (1 * 60 * 60 * 1000))) {
             return gatewayMarkerPrivateOffline;
         }
@@ -366,6 +382,12 @@ function iconByNetworkId(networkId, lastHeardDate) {
             return gatewayMarkerHeliumOffline;
         }
         return gatewayMarkerHeliumOnline;
+    }
+    if(networkId.startsWith("NS_THINGSIX")) {
+        if(lastHeardDate < (Date.now() - (2*24*60*60*1000)) ) {
+            return gatewayMarkerThingsIxOffline;
+        }
+        return gatewayMarkerThingsIxOnline;
     }
     return gatewayMarkerDefault;
 }

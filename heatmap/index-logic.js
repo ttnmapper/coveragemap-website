@@ -11,6 +11,12 @@ let networks = [
         gateway_layer_name: 'TTN V3 Gateways',
         default_shown: false
     },
+    {
+        network_id: 'NS_THINGSIX',
+        network_name: 'ThingsIX',
+        gateway_layer_name: 'ThingsIX Gateways',
+        default_shown: false
+    },
 ];
 
 var gateway_layers = [];
