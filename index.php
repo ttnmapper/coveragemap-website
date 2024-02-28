@@ -1,3 +1,7 @@
+<?php
+header("Location:/heatmap/");
+exit();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/head.php'; ?>
@@ -44,10 +48,6 @@
 </nav>
 
 <div class="container">
-    <?php
-    //header("Location:/heatmap/");
-    //exit();
-    ?>
 
 
 
