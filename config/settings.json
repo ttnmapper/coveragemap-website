@@ -11,7 +11,7 @@
     "site_description": "Coverage of the Helium People's Network",
     "favicon_dir": "/config/favicons",
     "brand_icon": "/config/TTNMapper.svg",
-    "brand_name": "Coverage Map",
+    "brand_name": "Helium Coverage",
     "map_start_lat": 37.83,
     "map_start_lon": -122.35,
     "map_start_zoom": 11,

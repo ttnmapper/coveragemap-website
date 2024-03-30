@@ -12,7 +12,7 @@ exit();
 
     <a class="navbar-brand" href="/">
         <img src="<?php echo $brandIcon; ?>" width="auto" height="32" class="d-inline-block align-top" alt="">
-        Coverage Map
+        <?php echo $brandName; ?>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2"
@@ -29,20 +29,9 @@ exit();
                 <a class="nav-link" href="/advanced-maps/">Advanced maps</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://ttnmapper.org">The Things Network</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://docs.ttnmapper.org">Docs</a>
+                <a class="nav-link" href="https://coveragemap.net">CoverageMap.net</a>
             </li>
         </ul>
-    </div>
-
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <div class="navbar-nav ml-auto">
-            <a href="https://docs.ttnmapper.org/support-project.html" target="_blank">
-                <button class="btn btn-primary">Support the project</button>
-            </a>
-        </div>
     </div>
 
 </nav>
