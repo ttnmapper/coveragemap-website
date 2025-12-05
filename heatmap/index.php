@@ -35,6 +35,16 @@
 
     </nav>
 
+    <!-- The Notice (Alert) -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <a class="alert-link" href="https://www.thethingsnetwork.org/forum/t/ttn-mapper-time-to-shut-down/72749">
+            Please read this important announcement regarding the CoverageMap.net (a.k.a. TTN Mapper) service.
+        </a>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <div id="progress" style="display: none;">Loading Hotspots
         <div class="spinner-border float-right" role="status" style="height: 20px; width: 20px;">
             <span class="sr-only">Loading...</span>
